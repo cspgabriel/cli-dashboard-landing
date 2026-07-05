@@ -1,0 +1,12 @@
+{
+  "name": "cli-dashboard-landing",
+  "version": "1.0.0",
+  "description": "CLI Dashboard landing page with Windows executable download",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "devDependencies": {
+    "vercel": "^54.20.1"
+  }
+}
