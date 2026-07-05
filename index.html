@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CLI Dashboard - Gerencie todas as suas CLIs</title>
-  <meta name="description" content="Baixe o CLI Dashboard para Windows e gerencie GitHub, gcloud, Firebase, Cloudflare, Vercel, Supabase, Hostinger, Azure, Docker e outras CLIs em um painel unico.">
+  <title>CLI Dashboard - Open source CLI manager para devs e IA</title>
+  <meta name="description" content="Projeto open source para Windows que gerencia, instala, atualiza e audita CLIs usadas por devs, operadores cloud, marketing técnico e profissionais que trabalham com IAs e agentes.">
   <meta property="og:title" content="CLI Dashboard">
-  <meta property="og:description" content="Um painel Windows para ver, conectar, atualizar e auditar todas as suas CLIs.">
+  <meta property="og:description" content="Um painel open source para ver, conectar, instalar, atualizar e auditar CLIs locais.">
   <meta property="og:image" content="/assets/cli-dashboard-preview.png">
   <meta property="og:type" content="website">
   <link rel="preload" as="image" href="/assets/cli-dashboard-preview.png">
@@ -236,6 +236,69 @@
     .feature h3 { margin: 0 0 8px; font-size: 18px; }
     .feature p { margin: 0; color: var(--muted); }
 
+    .persona-grid,
+    .library-grid,
+    .opensource-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .persona,
+    .library-item,
+    .opensource-card {
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, .72);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .persona strong,
+    .library-item strong,
+    .opensource-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .persona p,
+    .library-item span,
+    .opensource-card p {
+      display: block;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .open-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .terminal {
+      border: 1px solid rgba(34, 197, 94, .28);
+      background: #020617;
+      border-radius: var(--radius);
+      padding: 18px;
+      font-family: "Cascadia Code", "JetBrains Mono", monospace;
+      color: #bbf7d0;
+      overflow: auto;
+      font-size: 13px;
+    }
+    .terminal .muted-line { color: #64748b; }
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .pill {
+      border: 1px solid rgba(96, 165, 250, .30);
+      background: rgba(37, 99, 235, .12);
+      border-radius: 999px;
+      padding: 7px 10px;
+      color: #bfdbfe;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
     .table {
       overflow: hidden;
       border: 1px solid var(--line);
@@ -329,7 +392,7 @@
     }
 
     @media (max-width: 980px) {
-      .hero-grid, .feature-grid, .steps, .download-panel, .faq { grid-template-columns: 1fr; }
+      .hero-grid, .feature-grid, .steps, .download-panel, .faq, .persona-grid, .library-grid, .opensource-grid, .open-panel { grid-template-columns: 1fr; }
       .proof { grid-template-columns: repeat(2, 1fr); }
       .nav-links { display: none; }
       .hero { padding-top: 48px; min-height: auto; }
@@ -358,8 +421,10 @@
       </a>
       <div class="nav-links">
         <a href="#recursos">Recursos</a>
+        <a href="#ia">IA</a>
+        <a href="#biblioteca">Biblioteca</a>
+        <a href="#opensource">Open source</a>
         <a href="#clis">CLIs</a>
-        <a href="#como-funciona">Como funciona</a>
         <a href="#download">Download</a>
       </div>
       <a class="btn btn-primary" href="/download/CLI-Dashboard.exe" download>
@@ -373,9 +438,9 @@
     <header class="hero">
       <div class="wrap hero-grid">
         <div>
-          <span class="eyebrow"><span class="dot"></span> Windows desktop - versao 1.3.0</span>
-          <h1>Gerencie todas as suas CLIs em um painel</h1>
-          <p class="lead">Veja contas conectadas, adicione perfis, desconecte acessos, atualize CLIs, gere backup e monitore erros sem caçar comando por comando no terminal.</p>
+          <span class="eyebrow"><span class="dot"></span> Open source Windows desktop - versao 1.4.0</span>
+          <h1>O painel CLI para quem trabalha com IA</h1>
+          <p class="lead">Gerencie, instale, conecte, atualize e audite CLIs usadas por devs, operadores cloud, times de automação e profissionais que trabalham com agentes de IA.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="/download/CLI-Dashboard.exe" download>
               <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -386,12 +451,12 @@
               Ver GitHub
             </a>
           </div>
-          <p class="microcopy">Arquivo Windows `.exe`, build local atual, pronto para abrir sem instalar dependencias Python.</p>
+          <p class="microcopy">Projeto MIT open source. O `.exe` roda sem instalar Python e o código fica aberto para contribuições.</p>
           <div class="proof">
-            <div class="proof-card"><strong>11+</strong><span>CLIs monitoradas</span></div>
+            <div class="proof-card"><strong>20+</strong><span>CLIs na biblioteca</span></div>
             <div class="proof-card"><strong>Multi</strong><span>contas e perfis</span></div>
-            <div class="proof-card"><strong>30s</strong><span>auto-refresh</span></div>
-            <div class="proof-card"><strong>1 clique</strong><span>backup e update</span></div>
+            <div class="proof-card"><strong>IA</strong><span>Codex, Claude, Gemini</span></div>
+            <div class="proof-card"><strong>MIT</strong><span>open source</span></div>
           </div>
         </div>
         <div class="preview-shell">
@@ -438,6 +503,83 @@
             <h3>Hostinger corrigido</h3>
             <p>Configuração agora pede API token, salva em `.hostinger.yaml` e valida com `domains portfolio list --format json`.</p>
           </article>
+          <article class="feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M8 12h8M10 18h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <h3>Biblioteca de instalação</h3>
+            <p>Instale Git, Node, Python, GitHub CLI, cloud CLIs, IA CLIs, Kubernetes e infra direto pelo app.</p>
+          </article>
+          <article class="feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m8 9 3 3-3 3M13 15h3M4 5h16v14H4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>CLI customizada</h3>
+            <p>Cole comandos confiáveis como `winget install`, `npm install -g` ou `pipx install` para adicionar novas ferramentas.</p>
+          </article>
+          <article class="feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8h14M7 16h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <h3>Pronto para contribuir</h3>
+            <p>MIT, README, SECURITY, CONTRIBUTING e lista de CLIs documentada para receber PRs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ia">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Bom para quem opera IAs e agentes</h2>
+          <p>Trabalhar com IA hoje significa alternar entre GitHub, cloud, deploy, containers, APIs, MCPs, CLIs de modelo e tokens locais.</p>
+        </div>
+        <div class="persona-grid">
+          <article class="persona"><strong>Coding agents</strong><p>Prepare Codex, Claude Code, Gemini, GitHub CLI, Git e Node sem caçar setup em cada projeto.</p></article>
+          <article class="persona"><strong>Automação e MCP</strong><p>Padronize CLIs usadas por agentes que mexem em Drive, GitHub, Vercel, Firebase, Cloudflare e Supabase.</p></article>
+          <article class="persona"><strong>Cloud e deploy</strong><p>Veja se gcloud, Azure, AWS, Docker, Vercel, Wrangler e Firebase estão conectados antes de rodar tarefas críticas.</p></article>
+          <article class="persona"><strong>Marketing técnico</strong><p>Centralize GMP, Search Console, GA4, Google Ads, GTM, Hostinger, Cloudflare e ferramentas de publicação.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="biblioteca">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Biblioteca pronta para instalar</h2>
+          <p>Principais CLIs já vêm cadastradas. Você instala pelo app e depois clica em Verificar Agora.</p>
+        </div>
+        <div class="library-grid">
+          <article class="library-item"><strong>Base dev</strong><span>Git, Node.js LTS, Python, GitHub CLI, Docker Desktop.</span></article>
+          <article class="library-item"><strong>Cloud e deploy</strong><span>gcloud, Firebase, Vercel, Wrangler, Azure CLI, AWS CLI, Supabase.</span></article>
+          <article class="library-item"><strong>IA e agentes</strong><span>OpenAI Codex CLI, Claude Code, Gemini CLI e runtimes para agentes.</span></article>
+          <article class="library-item"><strong>Infra</strong><span>Terraform, kubectl, Helm e utilitários para ambientes de produção.</span></article>
+          <article class="library-item"><strong>Google e marketing</strong><span>GMP CLI, Google Workspace CLI, Search Console, GA4, Ads, GTM e BigQuery.</span></article>
+          <article class="library-item"><strong>Hosting e DNS</strong><span>Hostinger CLI, Cloudflare Wrangler, Vercel e ferramentas de deploy web.</span></article>
+          <article class="library-item"><strong>Custom install</strong><span>Campo livre para `winget`, `npm`, `pipx`, `choco`, `scoop` ou script PowerShell.</span></article>
+          <article class="library-item"><strong>Atualização em lote</strong><span>Atualize CLIs monitoradas sem abrir dez terminais separados.</span></article>
+        </div>
+        <div class="pill-list">
+          <span class="pill">GitHub CLI</span><span class="pill">gcloud</span><span class="pill">Firebase</span><span class="pill">Vercel</span><span class="pill">Wrangler</span><span class="pill">Supabase</span><span class="pill">Azure</span><span class="pill">AWS</span><span class="pill">Codex</span><span class="pill">Claude</span><span class="pill">Gemini</span><span class="pill">Hostinger</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="opensource">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Agora é open source</h2>
+          <p>Código aberto, licença MIT e estrutura pronta para comunidade adicionar novas CLIs e melhorar detectores.</p>
+        </div>
+        <div class="open-panel">
+          <div class="opensource-grid">
+            <article class="opensource-card"><strong>MIT License</strong><p>Uso, fork, modificação e distribuição liberados dentro da licença.</p></article>
+            <article class="opensource-card"><strong>Contribuições</strong><p>PRs para novos checks, comandos de instalação, UI, empacotamento e multi-conta.</p></article>
+            <article class="opensource-card"><strong>Segurança</strong><p>Sem credenciais embutidas. Backups locais são tratados como arquivos privados.</p></article>
+            <article class="opensource-card"><strong>Roadmap aberto</strong><p>Linux/macOS, releases assinadas, plugins de CLI e instalação por manifesto.</p></article>
+          </div>
+          <pre class="terminal"><span class="muted-line"># rodar local</span>
+git clone https://github.com/cspgabriel/cli-dashboard
+cd cli-dashboard
+py -3.14 -m pip install customtkinter darkdetect packaging
+py -3.14 .\cli_dashboard.py
+
+<span class="muted-line"># gerar exe</span>
+py -3.14 .\build_exe.py</pre>
         </div>
       </div>
     </section>
@@ -445,17 +587,18 @@
     <section id="clis">
       <div class="wrap">
         <div class="section-head">
-          <h2>CLIs cobertas</h2>
-          <p>O painel mostra nome de conta/projeto sempre que a CLI retorna essa informação.</p>
+          <h2>CLIs monitoradas e instaláveis</h2>
+          <p>O painel mostra nome de conta/projeto sempre que a CLI retorna essa informação e oferece instalação para ferramentas ainda ausentes.</p>
         </div>
         <div class="table" role="table" aria-label="CLIs suportadas">
-          <div class="table-row table-head"><div>CLI</div><div>Conta</div><div>Ações</div><div>Status</div></div>
+          <div class="table-row table-head"><div>CLI</div><div>Conta</div><div>Ações</div><div>Biblioteca</div></div>
           <div class="table-row"><div>GitHub CLI</div><div>Usuario autenticado</div><div>Adicionar conta, logout</div><div><span class="status">Conectado</span></div></div>
           <div class="table-row"><div>gcloud CLI</div><div>Todas as contas do auth list</div><div>Ativar, revogar, adicionar</div><div><span class="status">Multi-conta</span></div></div>
           <div class="table-row"><div>Firebase CLI</div><div>Login list por email</div><div>Usar, revogar, login add</div><div><span class="status">Multi-conta</span></div></div>
           <div class="table-row"><div>Google Search Console / GMP</div><div>Sessão e perfis salvos</div><div>Adicionar, salvar perfil, logout</div><div><span class="status">Conectado</span></div></div>
-          <div class="table-row"><div>Cloudflare, Vercel, Supabase, Azure</div><div>Conta detectada via CLI</div><div>Conectar, gerenciar, logout</div><div><span class="status warn">Configurável</span></div></div>
-          <div class="table-row"><div>Hostinger CLI</div><div>Token API validado</div><div>Configurar token, testar, desconectar</div><div><span class="status bad">Requer token</span></div></div>
+          <div class="table-row"><div>Cloudflare, Vercel, Supabase, Azure, AWS</div><div>Conta detectada via CLI</div><div>Conectar, gerenciar, logout</div><div><span class="status warn">Instalável</span></div></div>
+          <div class="table-row"><div>Codex, Claude, Gemini</div><div>CLIs de IA e agentes</div><div>Instalar, verificar, operar</div><div><span class="status">IA</span></div></div>
+          <div class="table-row"><div>Hostinger CLI</div><div>Token API validado</div><div>Instalar, configurar token, testar</div><div><span class="status warn">API token</span></div></div>
         </div>
       </div>
     </section>
@@ -490,8 +633,8 @@
       <div class="wrap">
         <div class="download-panel">
           <div>
-            <h2>Baixar CLI Dashboard</h2>
-            <p>Executável Windows atualizado com layout novo, sidebar funcional, Hostinger token flow, Supabase login fix, multi-contas e atualizador de CLIs.</p>
+            <h2>Baixar CLI Dashboard v1.4.0</h2>
+            <p>Executável Windows com biblioteca de instalação, CLI customizada, open source docs, Hostinger portável, Supabase login fix, multi-contas e atualizador de CLIs.</p>
           </div>
           <a class="btn btn-primary" href="/download/CLI-Dashboard.exe" download>
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -517,6 +660,14 @@
             <p>Ele lê configs locais das CLIs. Para Hostinger, salva o API token no arquivo oficial `.hostinger.yaml`.</p>
           </article>
           <article class="faq-item">
+            <strong>Posso instalar uma CLI que não está na lista?</strong>
+            <p>Sim. Use o campo de comando customizado para rodar um instalador confiável, como `winget`, `npm`, `pipx`, `scoop` ou `choco`.</p>
+          </article>
+          <article class="faq-item">
+            <strong>Por que isso ajuda quem trabalha com IA?</strong>
+            <p>Agentes usam GitHub, cloud, deploy, modelos, automações e tokens locais. O dashboard reduz o tempo perdido validando ambiente.</p>
+          </article>
+          <article class="faq-item">
             <strong>Dá para usar mais de uma conta?</strong>
             <p>Sim. gcloud e Firebase aparecem por conta. Outras CLIs dependem do suporte nativo de perfil/login.</p>
           </article>
@@ -531,8 +682,8 @@
 
   <footer>
     <div class="wrap footer-inner">
-      <span>CLI Dashboard - Windows desktop app</span>
-      <span><a href="https://github.com/cspgabriel/cli-dashboard" target="_blank" rel="noreferrer">GitHub</a> · <a href="/download/CLI-Dashboard.exe" download>Download EXE</a></span>
+      <span>CLI Dashboard - open source Windows desktop app · MIT</span>
+      <span><a href="https://github.com/cspgabriel/cli-dashboard" target="_blank" rel="noreferrer">GitHub</a> · <a href="https://github.com/cspgabriel/cli-dashboard/blob/main/CLIS.md" target="_blank" rel="noreferrer">CLI Library</a> · <a href="/download/CLI-Dashboard.exe" download>Download EXE</a></span>
     </div>
   </footer>
 </body>
